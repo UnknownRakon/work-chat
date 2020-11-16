@@ -6,15 +6,14 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 });
 
-
-http.listen(3000, () => {
-    console.log('Listening on port *: 3000');
+http.listen(8080, () => {
+    console.log('Listening on port *: 8080');
 });
 
 io.on('connection', (socket) => {
 
     socket.emit('connections', Object.keys(io.sockets.connected).length);
-
+    
     socket.on('disconnect', () => {
         console.log("A user disconnected");
     });
